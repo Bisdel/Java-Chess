@@ -16,8 +16,8 @@ public class chess {
             System.out.println("What's your name ?");
             player.name = sc.nextLine();
             System.out.println("Welcome " + player.name + " !\nWhich color would you play ? Enter W to play white, or B to play black.");
-            player.color = sc.nextLine();
-            while(player.color != "W" || player.color != "B"){
+            while(!player.color.equals("W") || !player.color.equals("B")){
+                player.color = sc.nextLine();
                 if (player.color == "W") {
                     System.out.println(player.name + " will play white. The convention in chess is white starts, so it's your turn !");
                 } else if (player.color == "B") {
