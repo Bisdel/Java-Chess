@@ -220,6 +220,7 @@ public class chess {
                     moveIsValid = true;
                     break;
                 }
+
             }
             // check if the pawn can move or capture
             if (moveIsValid || canCapture(newCoordinates[0], newCoordinates[1])) { // either the pawn moves forward or diagonally if it can capture a piece
