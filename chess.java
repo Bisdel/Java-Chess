@@ -228,8 +228,6 @@ public class chess {
                 this.position[1] = newCoordinates[1];
             }
         }
-
-        
     }
 
     public static class Plays {
