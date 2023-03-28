@@ -18,8 +18,7 @@ public class chess {
             // asks Player 1 for its name and to pick a color between black and white
             System.out.println("Player 1, what's your name ?");
             player.name = sc.nextLine();
-            System.out.println("Welcome " + player.name
-                    + " !\nWhich color would you play ? Enter W to play white, or B to play black.");
+            System.out.println("Welcome " + player.name + " !\nWhich color would you play ? Enter W to play white, or B to play black.");
             while (true) {
                 player.color = sc.nextLine();
                 if (player.color.equals("W") || player.color.equals("w")) {
@@ -223,11 +222,56 @@ public class chess {
                 }
             }
             // check if the pawn can move or capture
-            if (moveIsValid || canCapture(newCoordinates[0], newCoordinates[1])) {
+            if (moveIsValid || canCapture(newCoordinates[0], newCoordinates[1])) { // either the pawn moves forward or diagonally if it can capture a piece
                 this.position[0] = newCoordinates[0];
                 this.position[1] = newCoordinates[1];
             }
         }
+    }
+
+    public class Bishop implements Piece {
+        String name;                    // name of the piece (BB1, WB4)
+        int color;                      // color black: 1, white: -1
+        int[] position = new int[2];    // position of the piece (on the 8x8 matrix)
+
+        // constructor
+        public Bishop(String pawnName, String chessboardPosition) {
+            this.name = pawnName;
+            this.color = (pawnName.toLowerCase().charAt(0) > 100) ? 1 : -1;
+            int[] coordinates = Board.coordinates(chessboardPosition);
+            this.position[0] = coordinates[0];
+            this.position[1] = coordinates[1];
+        }
+
+        // list of possible moves of the piece located at line i, column j
+        public int[][] listMoves() {
+            int i = this.position[0];
+            int j = this.position[1];
+            int[][] moves;
+            
+            moves = new int[][] { { i + 1, j } };
+            
+            return moves;
+        }
+
+        @Override
+        public int checkAtPosition(int i, int j) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'checkAtPosition'");
+        }
+
+        @Override
+        public void updatePosition(String chessboardPosition) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'updatePosition'");
+        }
+
+        @Override
+        public boolean canCapture(int i, int j) {
+            // TODO Auto-generated method stub
+            throw new UnsupportedOperationException("Unimplemented method 'canCapture'");
+        }
+
     }
 
     public static class Plays {
